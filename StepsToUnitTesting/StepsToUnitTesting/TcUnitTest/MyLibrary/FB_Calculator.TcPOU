@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.14">
+  <POU Name="FB_Calculator" Id="{d3162d3c-96b3-44be-be7e-6b3cbeb3741f}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Calculator
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="Addition" Id="{86bd279a-79ba-43c2-8260-1a47e17f6b05}">
+      <Declaration><![CDATA[METHOD Addition : LREAL;
+VAR_INPUT
+	a : LREAL;
+	b : LREAL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[Addition := a + b;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Substraction" Id="{38af8a8f-366e-41e9-842d-b208d9a90196}">
+      <Declaration><![CDATA[METHOD Substraction : LREAL
+VAR_INPUT
+	a : LREAL;
+	b : LREAL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[Substraction := a - b;]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

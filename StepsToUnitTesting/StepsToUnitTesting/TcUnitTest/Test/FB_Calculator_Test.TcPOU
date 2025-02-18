@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.14">
+  <POU Name="FB_Calculator_Test" Id="{dba561dc-f696-44b3-a706-ae4b52c6801c}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Calculator_Test EXTENDS FB_TestSuite
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[AddOnePlusOneExpectTwo();
+SubThreeMinusTwoExpectOne();]]></ST>
+    </Implementation>
+    <Method Name="AddOnePlusOneExpectTwo" Id="{b453cb17-67b8-4ef4-928e-d8736f0ec2b5}">
+      <Declaration><![CDATA[METHOD PRIVATE AddOnePlusOneExpectTwo : LREAL;
+VAR
+	fbCalculator : FB_Calculator;
+	result: LREAL;
+END_VAR
+
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[TEST('AddOnePlusOneExpectTwo');
+
+	// @TEST-RUN
+	result := fbCalculator.Addition(a:=1,b:=1);
+	
+	// @TEST-ASSERT
+	AssertEquals_LREAL(Expected:=2,Actual:=result,Delta:=0.0,Message:=' Addition was not OK');
+	
+TEST_FINISHED();
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SubThreeMinusTwoExpectOne" Id="{2b8000fb-87eb-4836-8fbf-3aaf4837600f}">
+      <Declaration><![CDATA[METHOD PRIVATE SubThreeMinusTwoExpectOne : LREAL
+VAR
+	result: LREAL;
+	fbCalculator: FB_Calculator;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[TEST('SubThreeMinusTwoExpectOne');
+
+	// @TEST-RUN
+	result := fbCalculator.Substraction(a:=3,b:=2);
+	
+	// @TEST-ASSERT
+	AssertEquals_LREAL(Expected:=1,Actual:=result,Delta:=0.0,Message:='Substraction was not OK');
+	
+TEST_FINISHED();
+]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>
